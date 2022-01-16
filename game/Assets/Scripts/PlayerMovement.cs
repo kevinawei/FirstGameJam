@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
-    private float moveSpeed = 800;
+    public float moveSpeed = 800;
     public float jumpSpeed = 18;
     private bool isGrounded = true;
 
@@ -27,18 +27,17 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {   
         h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        v = Input.GetAxisRaw("Jump");
+        Debug.Log(v);
 
         move(h,v);
     }
 
     private void move(float h, float v){
-
-        if (Input.GetKeyDown("space")) {
-            if (isGrounded){
-                jump();
-                isGrounded = false;
-            }
+        
+        if (isGrounded && v == 1){
+            jump();
+            isGrounded = false;
         }
         else{
             rb.velocity = new Vector2(h * moveSpeed * Time.deltaTime, rb.velocity.y);

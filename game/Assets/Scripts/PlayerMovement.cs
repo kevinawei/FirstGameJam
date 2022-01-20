@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 800;
     public float jumpSpeed = 18;
     private bool isGrounded = true;
+    public bool isSwinging;
 
     float h;
     float v;
@@ -28,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     {   
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Jump");
-        Debug.Log(v);
 
         move(h,v);
     }
